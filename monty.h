@@ -60,7 +60,7 @@ void call_fun(op_func, char *, char *, int, int);
 
 void print_top(stack_t **, unsigned int);
 void pop(stack_t **, unsigned int);
-void non(stack_t **, unsigned int);
+void nop(stack_t **, unsigned int);
 void switch_nodes(stack_t **, unsigned int);
 
 /*Math operations with nodes*/
