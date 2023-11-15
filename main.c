@@ -5,6 +5,7 @@ stack_t *head = NULL;
  * main - entry point
  * @argc: arguments count
  * @argv: list of arguments
+ * @op_fil: Open file
  * Return: always 0
  */
 

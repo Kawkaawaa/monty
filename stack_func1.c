@@ -2,11 +2,11 @@
 
 
 /**
- * add_tsatck - Adds a node to the stack.
+ * add_tstack - Adds a node to the stack.
  * @new_node: Pointer to the new node.
  * @ln: Interger representing the line number of of the opcode.
  */
-void add_ttsatck(stack_t **new_node, __attribute__((unused))unsigned int ln)
+void add_tstack(stack_t **new_node, __attribute__((unused))unsigned int ln)
 {
 	stack_t *tmp;
 
