@@ -11,7 +11,7 @@ void ope_fil(char *fil_name)
 	FILE *fd = fopen(fil_name, "r");
 
 	if (fil_name == NULL || fd == NULL)
-		err(2, fil_name);
+		errs(2, fil_name);
 
 	rea_fil(fd);
 	fclose(fd);
@@ -54,7 +54,7 @@ int breakdown_line(char *buffer, int line_number, int format)
 	const char *delim = "\n ";
 
 	if (buffer == NULL)
-		err(4);
+		errs(4);
 
 	opcode = strtok(buffer, delim);
 	if (opcode == NULL)
@@ -85,12 +85,12 @@ void find_func(char *opcode, char *value, int ln, int format)
 	int flag;
 
 	instruction_t func_list[] = {
-		{"push", add_to_stack},
-		{"pall", print_stack},
+		{"push", add_tstack},
+		{"pall", print_str},
 		{"pint", print_top},
-		{"pop", pop_top},
-		{"nop", nop},
-		{"swap", swap_nodes},
+		{"pop", pop},
+		{"nop", non},
+		{"swap", switch_nodes},
 		{"add", add_nodes},
 		{"sub", sub_nodes},
 		{"div", div_nodes},
@@ -115,7 +115,7 @@ void find_func(char *opcode, char *value, int ln, int format)
 		}
 	}
 	if (flag == 1)
-		err(3, ln, opcode);
+		errs(3, ln, opcode);
 }
 
 
@@ -143,11 +143,11 @@ void call_fun(op_func func, char *op, char *val, int ln, int format)
 			flag = -1;
 		}
 		if (val == NULL)
-			err(5, ln);
+			errs(5, ln);
 		for (i = 0; val[i] != '\0'; i++)
 		{
 			if (isdigit(val[i]) == 0)
-				err(5, ln);
+				errs(5, ln);
 		}
 		node = create_node(atoi(val) * flag);
 		if (format == 0)
