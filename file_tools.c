@@ -7,11 +7,11 @@
  */
 
 void ope_fil(char *fil_name)
-{
+{       
 	FILE *fd = fopen(fil_name, "r");
 
 	if (fil_name == NULL || fd == NULL)
-		errs(2, fil_name);
+		err(2, fil_name);
 
 	rea_fil(fd);
 	fclose(fd);
@@ -54,7 +54,8 @@ int breakdown_line(char *buffer, int line_number, int format)
 	const char *delim = "\n ";
 
 	if (buffer == NULL)
-		errs(4);
+		err(4);
+
 
 	opcode = strtok(buffer, delim);
 	if (opcode == NULL)
@@ -115,7 +116,7 @@ void find_func(char *opcode, char *value, int ln, int format)
 		}
 	}
 	if (flag == 1)
-		errs(3, ln, opcode);
+		err(3, ln, opcode);
 }
 
 
@@ -143,11 +144,11 @@ void call_fun(op_func func, char *op, char *val, int ln, int format)
 			flag = -1;
 		}
 		if (val == NULL)
-			errs(5, ln);
+			err(5, ln);
 		for (i = 0; val[i] != '\0'; i++)
 		{
 			if (isdigit(val[i]) == 0)
-				errs(5, ln);
+				err(5, ln);
 		}
 		node = create_node(atoi(val) * flag);
 		if (format == 0)
