@@ -7,7 +7,7 @@
  */
 
 void op_fil(char *fil_name)
-{       
+{
 	FILE *fd = fopen(fil_name, "r");
 
 	if (fil_name == NULL || fd == NULL)
